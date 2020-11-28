@@ -1,5 +1,5 @@
 {
-    "name": "tui/musement-api-client-bundle",
+    "name": "fclopezjurado/musement-api-client-bundle",
     "version": "0.1.0",
     "description": "TUI Musement API client bundle",
     "type": "symfony-bundle",
