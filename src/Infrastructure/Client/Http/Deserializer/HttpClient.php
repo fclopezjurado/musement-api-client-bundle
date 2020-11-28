@@ -31,7 +31,12 @@ class HttpClient extends AbstractHttpClient
      */
     public function getCities(): array
     {
-        $uri = sprintf('%s%s', $this->apiConfiguration['base_url'], $this->apiConfiguration['cities_endpoint']);
+        $uri = sprintf(
+            '%s/%s%s',
+            $this->apiConfiguration['base_url'],
+            $this->apiConfiguration['version'],
+            $this->apiConfiguration['cities_endpoint']
+        );
 
         $response = $this->sendRequest(Request::METHOD_GET, $uri);
         var_dump($response);

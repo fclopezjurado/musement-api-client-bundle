@@ -1,7 +1,8 @@
 parameters:
     promotion_client.root_dir: '%kernel.project_dir%/vendor/shopadvizor/promotion-client-bundle/src'
     musement_api_client.api_configuration:
-        base_url: 'https://api.musement.com/api/v3'
+        version: 'v3'
+        base_url: 'https://api.musement.com/api'
         cities_endpoint: '/cities'
     musement_api_client.requests_headers:
         X-Musement-Version: '3.4.0'
