@@ -15,12 +15,12 @@ class HttpClient extends AbstractHttpClient
      * HttpClient constructor.
      *
      * @param array<string, string> $apiConfiguration
-     * @param array<string, string> $requestHeaders
+     * @param array<string, string> $requestsHeaders
      */
-    public function __construct(array $apiConfiguration, array $requestHeaders)
+    public function __construct(array $apiConfiguration, array $requestsHeaders)
     {
         $this->apiConfiguration = $apiConfiguration;
-        $this->headers = $requestHeaders;
+        $this->headers = $requestsHeaders;
         $this->client = new HttplugClient();
     }
 
