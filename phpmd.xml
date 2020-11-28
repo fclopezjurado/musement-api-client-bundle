@@ -14,11 +14,7 @@
         <exclude name="LongVariable" />
         <exclude name="ShortVariable" />
     </rule>
-    <rule ref="rulesets/naming.xml/ShortVariable">
-        <properties>
-            <property name="exceptions" value="id,dm" />
-        </properties>
-    </rule>
+    <rule ref="rulesets/naming.xml/ShortVariable" />
     <rule ref="rulesets/unusedcode.xml">
         <exclude name="UnusedFormalParameter" />
     </rule>
@@ -27,15 +23,11 @@
         <exclude name="DataStructureMethods" />
         <exclude name="MemberPrimaryPrefix" />
         <exclude name="PrivateFieldDeclaration" />
+        <exclude name="ConstructorNewOperator" />
     </rule>
     <rule ref="vendor/mi-schi/phpmd-extension/rulesets/naming.xml">
         <exclude name="ClassNameSuffix" />
     </rule>
-    <rule ref="vendor/mi-schi/phpmd-extension/rulesets/naming.xml/ClassNameSuffix">
-        <properties>
-            <property name="suffixes" value="Utility,Information" />
-        </properties>
-    </rule>
+    <rule ref="vendor/mi-schi/phpmd-extension/rulesets/naming.xml/ClassNameSuffix" />
     <rule ref="vendor/mi-schi/phpmd-extension/rulesets/test.xml" />
-    <exclude-pattern>src/Kernel.php</exclude-pattern>
 </ruleset>

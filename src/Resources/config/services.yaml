@@ -1,0 +1,18 @@
+parameters:
+    promotion_client.root_dir: '%kernel.project_dir%/vendor/shopadvizor/promotion-client-bundle/src'
+    musement_api_client.api_configuration:
+        version: 'v3'
+        base_url: 'https://api.musement.com/api/%musement_api_client.api_version%'
+        cities_endpoint: '/cities'
+    musement_api_client.requests_headers:
+        X-Musement-Version: '3.4.0'
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Tui\MusementApiClientBundle\Infrastructure\Client\Http\Deserializer\HttpClient:
+        class: Tui\MusementApiClientBundle\Infrastructure\Client\Http\Deserializer\HttpClient
+        arguments:
+            $apiConfiguration: '%musement_api_client.api_configuration%'
+            $requestsHeaders: '%musement_api_client.requests_headers%'
