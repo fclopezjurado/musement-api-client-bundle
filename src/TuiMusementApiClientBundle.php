@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tui\MusementApiClientBundle;
+namespace Tui\Musement\ApiClient;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Tui\MusementApiClientBundle\DependencyInjection\TuiMusementApiClientExtension;
+use Tui\Musement\ApiClient\DependencyInjection\TuiMusementApiClientExtension;
 
 class TuiMusementApiClientBundle extends Bundle
 {

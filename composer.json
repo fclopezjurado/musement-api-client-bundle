@@ -38,12 +38,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Tui\\MusementApiClientBundle\\": "src/"
+            "Tui\\Musement\\ApiClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tui\\MusementApiClientBundle\\Tests\\": "tests/"
+            "Tui\\Musement\\ApiClient\\Tests\\": "tests/"
         }
     },
     "replace": {

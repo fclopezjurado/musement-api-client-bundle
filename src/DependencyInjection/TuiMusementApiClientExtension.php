@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tui\MusementApiClientBundle\DependencyInjection;
+namespace Tui\Musement\ApiClient\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

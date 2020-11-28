@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tui\MusementApiClientBundle\Infrastructure\Client\Http\Deserializer;
+namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer;
 
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\HttpClient\HttplugClient;

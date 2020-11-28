@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tui\MusementApiClientBundle\Domain\Common\Exception;
+namespace Tui\Musement\ApiClient\Domain\Common\Exception;
 
 use Exception;
 
