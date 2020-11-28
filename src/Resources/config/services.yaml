@@ -11,8 +11,8 @@ services:
         autowire: true
         autoconfigure: true
 
-    Tui\MusementApiClientBundle\Infrastructure\Client\Http\Deserializer\HttpClient:
-        class: Tui\MusementApiClientBundle\Infrastructure\Client\Http\Deserializer\HttpClient
+    Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\HttpClient:
+        class: Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\HttpClient
         arguments:
             $apiConfiguration: '%musement_api_client.api_configuration%'
             $requestsHeaders: '%musement_api_client.requests_headers%'
