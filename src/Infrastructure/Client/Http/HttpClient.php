@@ -30,7 +30,7 @@ class HttpClient extends AbstractHttpClient
     protected $denormalizer;
 
     /**
-     * @var CityVisitorInterface $cityVisitor
+     * @var CityVisitorInterface
      */
     protected $cityVisitor;
 
@@ -39,7 +39,7 @@ class HttpClient extends AbstractHttpClient
      *
      * @param DeserializerInterface $deserializer
      * @param DenormalizerInterface $denormalizer
-     * @param CityVisitorInterface $cityVisitor
+     * @param CityVisitorInterface  $cityVisitor
      * @param array<string, string> $apiConfiguration
      * @param array<string, string> $requestsHeaders
      */
@@ -72,6 +72,7 @@ class HttpClient extends AbstractHttpClient
             $this->apiConfiguration['cities_endpoint']
         );
 
+        /** @var array[] $response */
         $response = $this->sendRequest(Request::METHOD_GET, $uri);
 
         return array_map(function ($cityData) {
@@ -85,7 +86,7 @@ class HttpClient extends AbstractHttpClient
      *
      * @throws \Exception
      *
-     * @return array<string>
+     * @return array<string, float|int|string|array|null>
      */
     protected function sendRequest(string $method, string $uri): array
     {

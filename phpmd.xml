@@ -14,7 +14,16 @@
         <exclude name="LongVariable" />
         <exclude name="ShortVariable" />
     </rule>
-    <rule ref="rulesets/naming.xml/ShortVariable" />
+    <rule ref="rulesets/naming.xml/ShortVariable">
+        <properties>
+            <property name="exceptions" value="id" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortMethodName">
+        <properties>
+            <property name="exceptions" value="id" />
+        </properties>
+    </rule>
     <rule ref="rulesets/unusedcode.xml">
         <exclude name="UnusedFormalParameter" />
     </rule>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Validator;
 
 use Tui\Musement\ApiClient\Domain\Shared\Exception\MalformedDeserializationException;
@@ -7,7 +9,14 @@ use Tui\Musement\ApiClient\Infrastructure\Client\Http\Normalizer\CamelCaseToSnak
 
 class Validator implements ValidatorInterface
 {
-    public function array_keys_exist(
+    /**
+     * @param CamelCaseToSnakeCaseNormalizerInterface $normalizer
+     * @param string[]                                $keysToValidate
+     * @param string[]                                $validKeys
+     *
+     * @throws MalformedDeserializationException
+     */
+    public function arrayKeysExist(
         CamelCaseToSnakeCaseNormalizerInterface $normalizer,
         array $keysToValidate,
         array $validKeys
@@ -15,7 +24,7 @@ class Validator implements ValidatorInterface
         $normalizedValidKeys = $normalizer->normalize($validKeys);
         $intersection = array_intersect($keysToValidate, $normalizedValidKeys);
 
-        if (count($intersection) !== count($keysToValidate)) {
+        if (\count($intersection) !== \count($keysToValidate)) {
             throw new MalformedDeserializationException();
         }
     }

@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Domain\City\Model;
 
 use Tui\Musement\ApiClient\Domain\Country\Model\Country;
 use Tui\Musement\ApiClient\Domain\Shared\Model\AbstractEntity;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ */
 class City extends AbstractEntity
 {
     /**
@@ -108,8 +113,7 @@ class City extends AbstractEntity
     protected $showInPopular;
 
     /**
-     * City constructor.
-     * @param array<string, string|int|float|Country> $parameters
+     * @param array<string, int|string|float|Country|null> $parameters
      */
     public function __construct(array $parameters)
     {
@@ -120,106 +124,8 @@ class City extends AbstractEntity
         }
     }
 
-    public function id(): int
+    public function __get(string $name): mixed
     {
-        return $this->id;
-    }
-
-    public function top(): ?string
-    {
-        return $this->top;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function code(): string
-    {
-        return $this->code;
-    }
-
-    public function content(): ?string
-    {
-        return $this->content;
-    }
-
-    public function metaDescription(): string
-    {
-        return $this->metaDescription;
-    }
-
-    public function metaTitle(): ?string
-    {
-        return $this->metaTitle;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function headline(): ?string
-    {
-        return $this->headline;
-    }
-
-    public function more(): string
-    {
-        return $this->more;
-    }
-
-    public function weight(): int
-    {
-        return $this->weight;
-    }
-
-    public function latitude(): float
-    {
-        return $this->latitude;
-    }
-
-    public function longitude(): float
-    {
-        return $this->longitude;
-    }
-
-    public function country(): Country
-    {
-        return $this->country;
-    }
-
-    public function coverImageUrl(): string
-    {
-        return $this->coverImageUrl;
-    }
-
-    public function url(): string
-    {
-        return $this->url;
-    }
-
-    public function eventCount(): int
-    {
-        return $this->eventCount;
-    }
-
-    public function timeZone(): string
-    {
-        return $this->timeZone;
-    }
-
-    public function listCount(): int
-    {
-        return $this->listCount;
-    }
-
-    public function venueCount(): int
-    {
-        return $this->venueCount;
-    }
-
-    public function showInPopular(): int
-    {
-        return $this->showInPopular;
+        return $this->{$name};
     }
 }

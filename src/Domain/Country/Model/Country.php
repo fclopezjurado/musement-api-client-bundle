@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Domain\Country\Model;
 
 use Tui\Musement\ApiClient\Domain\Shared\Model\AbstractEntity;
@@ -21,12 +23,6 @@ class Country extends AbstractEntity
      */
     protected $isoCode;
 
-    /**
-     * Country constructor.
-     * @param int $id
-     * @param string $name
-     * @param string $isoCode
-     */
     public function __construct(int $id, string $name, string $isoCode)
     {
         $this->id = $id;
@@ -34,18 +30,8 @@ class Country extends AbstractEntity
         $this->isoCode = $isoCode;
     }
 
-    public function id(): int
+    public function __get(string $name): mixed
     {
-        return $this->id;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function isoCode(): string
-    {
-        return $this->isoCode;
+        return $this->{$name};
     }
 }

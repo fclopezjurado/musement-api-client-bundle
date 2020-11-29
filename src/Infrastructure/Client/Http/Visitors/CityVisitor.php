@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Visitors;
 
 use Tui\Musement\ApiClient\Domain\City\Service\CityBuilderInterface;
@@ -11,12 +13,24 @@ use Tui\Musement\ApiClient\Infrastructure\Client\Http\Validator\ValidatorInterfa
 
 class CityVisitor implements CityVisitorInterface
 {
+    /**
+     * @var CityBuilderInterface
+     */
     protected $cityBuilder;
 
+    /**
+     * @var ValidatorInterface
+     */
     protected $validator;
 
+    /**
+     * @var CountryVisitorInterface
+     */
     protected $countryVisitor;
 
+    /**
+     * @var CamelCaseToSnakeCaseNormalizerInterface
+     */
     protected $normalizer;
 
     public function __construct(
@@ -31,20 +45,31 @@ class CityVisitor implements CityVisitorInterface
         $this->normalizer = $normalizer;
     }
 
+    /**
+     * @param DenormalizerInterface                      $denormalizer
+     * @param array<string, float|int|string|array|null> $normalizedData
+     *
+     * @throws \Tui\Musement\ApiClient\Domain\Shared\Exception\MalformedDeserializationException
+     *
+     * @return AbstractEntity
+     */
     public function denormalize(DenormalizerInterface $denormalizer, array $normalizedData): AbstractEntity
     {
         $validKeys = array_keys($this->cityBuilder->toArray());
         $keysToValidate = array_keys($normalizedData);
 
-        $this->validator->array_keys_exist($this->normalizer, $keysToValidate, $validKeys);
+        $this->validator->arrayKeysExist($this->normalizer, $keysToValidate, $validKeys);
 
+        /** @var array<string, float|int|string|array|null> $countryData */
+        $countryData = $normalizedData['country'];
         /** @var Country $country */
-        $country = $denormalizer->accept($this->countryVisitor, $normalizedData['country']);
+        $country = $denormalizer->accept($this->countryVisitor, $countryData);
         $denormalizedData = $this->normalizer->denormalize($normalizedData);
         $denormalizedData['country'] = $country;
 
         return $this->cityBuilder
             ->fromArray($denormalizedData)
-            ->build();
+            ->build()
+        ;
     }
 }

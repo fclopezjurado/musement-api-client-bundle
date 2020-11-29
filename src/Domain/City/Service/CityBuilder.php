@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Domain\City\Service;
 
 use Tui\Musement\ApiClient\Domain\City\Model\City;
 use Tui\Musement\ApiClient\Domain\Country\Model\Country;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ */
 class CityBuilder implements CityBuilderInterface
 {
     /**
@@ -107,6 +112,11 @@ class CityBuilder implements CityBuilderInterface
      */
     protected $showInPopular;
 
+    /**
+     * @param array<string, int|string|float|array|null> $data
+     *
+     * @return $this|CityBuilderInterface
+     */
     public function fromArray(array $data): CityBuilderInterface
     {
         foreach ($data as $key => $value) {
@@ -123,6 +133,9 @@ class CityBuilder implements CityBuilderInterface
         return new City(get_object_vars($this));
     }
 
+    /**
+     * @return array<string, int|string|float|array|null>
+     */
     public function toArray(): array
     {
         return get_object_vars($this);

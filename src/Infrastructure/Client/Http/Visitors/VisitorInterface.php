@@ -9,5 +9,13 @@ use Tui\Musement\ApiClient\Infrastructure\Client\Http\Denormalizer\DenormalizerI
 
 interface VisitorInterface
 {
+    /**
+     * @param DenormalizerInterface                      $denormalizer
+     * @param array<string, float|int|string|array|null> $normalizedData
+     *
+     * @throws \Tui\Musement\ApiClient\Domain\Shared\Exception\MalformedDeserializationException
+     *
+     * @return AbstractEntity
+     */
     public function denormalize(DenormalizerInterface $denormalizer, array $normalizedData): AbstractEntity;
 }

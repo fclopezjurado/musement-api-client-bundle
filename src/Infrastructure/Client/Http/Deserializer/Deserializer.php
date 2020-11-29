@@ -1,11 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer;
 
 use Tui\Musement\ApiClient\Domain\Shared\Exception\MalformedDeserializationException;
 
 class Deserializer implements DeserializerInterface
 {
+    /**
+     * @param string $content
+     *
+     * @throws MalformedDeserializationException
+     *
+     * @return array<string, string|int|float|null>
+     */
     public function deserialize(string $content): array
     {
         $content = json_decode($content, true);

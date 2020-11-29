@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Normalizer;
 
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
@@ -7,6 +9,9 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
 
 class CamelCaseToSnakeCaseNormalizer implements CamelCaseToSnakeCaseNormalizerInterface
 {
+    /**
+     * @var SymfonyCamelCaseToSnakeCaseNameConverter
+     */
     protected $normalizer;
 
     public function __construct()
@@ -16,6 +21,7 @@ class CamelCaseToSnakeCaseNormalizer implements CamelCaseToSnakeCaseNormalizerIn
 
     /**
      * @param string[] $keys
+     *
      * @return string[]
      */
     public function normalize(array $keys): array
@@ -26,15 +32,16 @@ class CamelCaseToSnakeCaseNormalizer implements CamelCaseToSnakeCaseNormalizerIn
     }
 
     /**
-     * @param string[] $normalizedData
-     * @return string[]
+     * @param array<string, float|int|string|array|null> $normalizedData
+     *
+     * @return array<string, float|int|string|array|null>
      */
     public function denormalize(array $normalizedData): array
     {
         $denormalizedData = [];
 
         foreach ($normalizedData as $key => $value) {
-            $denormalizedKey = $this->normalizer->denormalize($key);;
+            $denormalizedKey = $this->normalizer->denormalize($key);
             $denormalizedData[$denormalizedKey] = $value;
         }
 
