@@ -16,7 +16,7 @@ services:
             $apiConfiguration: '%musement_api_client.api_configuration%'
             $requestsHeaders: '%musement_api_client.requests_headers%'
 
-    Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\:
+    Tui\Musement\ApiClient\Infrastructure\Client\Http\:
         resource: '../../Infrastructure/Client/Http/*/'
 
     Tui\Musement\ApiClient\Domain\:
