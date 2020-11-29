@@ -115,7 +115,7 @@ class City extends AbstractEntity
     {
         foreach ($parameters as $name => $value) {
             if (property_exists(self::class, $name)) {
-                $this->{$parameter} = $value;
+                $this->{$name} = $value;
             }
         }
     }

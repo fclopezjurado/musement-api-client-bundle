@@ -12,9 +12,10 @@ class Validator implements ValidatorInterface
         array $keysToValidate,
         array $validKeys
     ): void {
-        $intersection = array_intersect($validKeys, $keysToValidate);
+        $normalizedValidKeys = $normalizer->normalize($validKeys);
+        $intersection = array_intersect($keysToValidate, $normalizedValidKeys);
 
-        if (count($intersection) !== count($validKeys)) {
+        if (count($intersection) !== count($keysToValidate)) {
             throw new MalformedDeserializationException();
         }
     }
