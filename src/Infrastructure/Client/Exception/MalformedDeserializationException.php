@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tui\Musement\ApiClient\Domain\Shared\Exception;
+namespace Tui\Musement\ApiClient\Infrastructure\Client\Exception;
 
 use Exception;
 

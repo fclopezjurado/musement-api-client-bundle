@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer;
 
-use Tui\Musement\ApiClient\Domain\Shared\Exception\MalformedDeserializationException;
+use Tui\Musement\ApiClient\Infrastructure\Client\Exception\MalformedDeserializationException;
 
 class Deserializer implements DeserializerInterface
 {

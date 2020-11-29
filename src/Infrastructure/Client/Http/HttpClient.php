@@ -7,7 +7,9 @@ namespace Tui\Musement\ApiClient\Infrastructure\Client\Http;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\HttpClient\HttplugClient;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Tui\Musement\ApiClient\Domain\Shared\Model\AbstractEntity;
+use Tui\Musement\ApiClient\Infrastructure\Client\Exception\BadGatewayException;
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\Denormalizer\DenormalizerInterface;
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\DeserializerInterface;
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\Visitors\CityVisitorInterface;
@@ -100,6 +102,10 @@ class HttpClient extends AbstractHttpClient
                 throw $exception;
             }
         );
+
+        if (Response::HTTP_OK !== $response->getStatusCode()) {
+            throw new BadGatewayException();
+        }
 
         return $this->deserializer->deserialize($response->getBody()->getContents());
     }
