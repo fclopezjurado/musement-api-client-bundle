@@ -63,11 +63,7 @@
         ],
         "test:all": [
             "@php vendor/bin/phpunit"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

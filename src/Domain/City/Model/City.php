@@ -124,8 +124,18 @@ class City extends AbstractEntity
         }
     }
 
-    public function __get(string $name): mixed
+    public function latitude(): float
     {
-        return $this->{$name};
+        return $this->latitude;
+    }
+
+    public function longitude(): float
+    {
+        return $this->longitude;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
     }
 }
