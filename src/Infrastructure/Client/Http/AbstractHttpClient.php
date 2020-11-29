@@ -2,18 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer;
+namespace Tui\Musement\ApiClient\Infrastructure\Client\Http;
 
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\HttpClient\HttplugClient;
 
 abstract class AbstractHttpClient
 {
-    /**
-     * @var array<string, string>
-     */
-    protected $apiConfiguration;
-
     /**
      * @var array<string, string>
      */

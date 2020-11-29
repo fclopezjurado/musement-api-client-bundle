@@ -1,5 +1,4 @@
 parameters:
-    promotion_client.root_dir: '%kernel.project_dir%/vendor/shopadvizor/promotion-client-bundle/src'
     musement_api_client.api_configuration:
         version: 'v3'
         base_url: 'https://api.musement.com/api'
@@ -11,8 +10,14 @@ services:
         autowire: true
         autoconfigure: true
 
-    Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\HttpClient:
-        class: Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\HttpClient
+    Tui\Musement\ApiClient\Infrastructure\Client\Http\HttpClient:
+        class: Tui\Musement\ApiClient\Infrastructure\Client\Http\HttpClient
         arguments:
             $apiConfiguration: '%musement_api_client.api_configuration%'
             $requestsHeaders: '%musement_api_client.requests_headers%'
+
+    Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\:
+        resource: '../../Infrastructure/Client/Http/*/'
+
+    Tui\Musement\ApiClient\Domain\:
+        resource: '../../Domain/*/Service/'
