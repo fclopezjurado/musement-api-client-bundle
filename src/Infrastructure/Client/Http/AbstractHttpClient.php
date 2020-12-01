@@ -29,7 +29,7 @@ abstract class AbstractHttpClient
      *
      * @return ResponseInterface
      */
-    public function request(
+    protected function request(
         string $method,
         string $uri,
         callable $onFullFilled,
