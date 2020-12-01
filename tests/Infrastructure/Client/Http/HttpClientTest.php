@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tui\Musement\ApiClient\Tests\Infrastructure\Client\Http;
 
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Tui\Musement\ApiClient\Infrastructure\Client\Exception\BadGatewayException;
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\Denormalizer\DenormalizerInterface;
@@ -12,7 +14,7 @@ use Tui\Musement\ApiClient\Infrastructure\Client\Http\Deserializer\DeserializerI
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\HttpClient;
 use Tui\Musement\ApiClient\Infrastructure\Client\Http\Visitors\CityVisitorInterface;
 
-class HttpClientTest extends KernelTestCase
+class HttpClientTest extends TestCase
 {
     public function testShouldThrowExceptionWhenGetCities(): void
     {
@@ -47,12 +49,15 @@ class HttpClientTest extends KernelTestCase
         $httpClientMock = $this->getMockBuilder(HttpClient::class)
             ->setConstructorArgs($mocks)
             ->onlyMethods(['request'])
-            ->getMock();
+            ->getMock()
+        ;
         $invocationMocker = $httpClientMock->expects($this->any())
-            ->method('request');
+            ->method('request')
+        ;
 
         if (null === $responseMock) {
             $invocationMocker->willThrowException(new \Exception());
+
             return $httpClientMock;
         }
 
@@ -66,11 +71,15 @@ class HttpClientTest extends KernelTestCase
         $mock = $this->createMock(ResponseInterface::class);
 
         $mock->method('getStatusCode')
-            ->willReturn($responseCode);
+            ->willReturn($responseCode)
+        ;
 
         return $mock;
     }
 
+    /**
+     * @return string[]
+     */
     protected function getApiConfigurationDataMock(): array
     {
         return [
