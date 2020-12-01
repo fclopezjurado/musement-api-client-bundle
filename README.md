@@ -1,5 +1,8 @@
 # TUI Musement API client bundle
 
+Author: Francisco Carlos López Jurado.
+Contact: Angela Maria Carsi
+
 HTTP Client bundle that connects to TUI Musement API.
 
 ## Installation
